@@ -157,51 +157,10 @@
 
 ### ER-диаграмма (Сущности)
 
-```
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│    Roles    │     │    Users    │     │  Libraries  │
-├─────────────┤     ├─────────────┤     ├─────────────┤
-│ id (PK)     │◄────│ role_id(FK) │     │ id (PK)     │
-│ name        │     │ id (PK)     │     │ name        │
-│ description │     │ username    │     │ address     │
-└─────────────┘     │ password    │     └──────┬──────┘
-                    │ email       │            │
-                    └──────┬──────┘            │
-                           │                   │
-                           ▼                   ▼
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│   Authors   │     │BorrowRecords│     │ BookCopies  │
-├─────────────┤     ├─────────────┤     ├─────────────┤
-│ id (PK)     │     │ id (PK)     │     │ id (PK)     │
-│ name        │     │ user_id(FK) │     │ book_id(FK) │
-│ biography   │     │ book_copy_id│     │ library_id  │
-└──────┬──────┘     │ borrow_date │     │ status      │
-       │            │ due_date    │     └──────┬──────┘
-       │            │ return_date │            │
-       │            │ status      │            │
-       │            └──────┬──────┘            │
-       │                   │                   │
-       ▼                   ▼                   ▼
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│ BookAuthors │     │    Fines    │     │    Books    │
-├─────────────┤     ├─────────────┤     ├─────────────┤
-│ book_id(FK) │     │ id (PK)     │     │ id (PK)     │
-│ author_id   │     │ borrow_id   │     │ title       │
-└─────────────┘     │ amount      │     │ isbn        │
-                    │ status      │     │ category_id │
-                    │ late_days   │     │ publisher_id│
-                    └─────────────┘     └─────────────┘
+![image](./data/1.png)
 
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│ Categories  │     │ Publishers  │     │ActivityLogs │
-├─────────────┤     ├─────────────┤     ├─────────────┤
-│ id (PK)     │     │ id (PK)     │     │ id (PK)     │
-│ name        │     │ name        │     │ user_id(FK) │
-│ description │     │ address     │     │ username    │
-└─────────────┘     └─────────────┘     │ action      │
-                                        │ timestamp   │
-                                        └─────────────┘
-```
+![image](./data/2.png)
+
 
 ### Таблицы базы данных
 
